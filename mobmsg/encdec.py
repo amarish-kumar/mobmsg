@@ -42,9 +42,11 @@ class MobileMessage():
 			return
 
 		start = 0
+		i = 1
 		for last in range(2, 21, 2):
-			self.encoded_msg += chr(int(self.combined_data[start:last]))
+			self.encoded_msg += chr(int(self.combined_data[start:last]) + i)
 			start += 2
+			i += 5
 
 		self.encoded_msg_len = len(self.encoded_msg)
 		self.encoded = True
@@ -55,11 +57,13 @@ class MobileMessage():
 		if not self.is_valid():
 			return
 
+		i = 1
 		for ch in self.encoded_msg:
 			if(ord(ch)/10==0):
-				self.decoded_msg += "0"+str(ord(ch))
+				self.decoded_msg += "0"+str(ord(ch) - i)
 			else:
-				self.decoded_msg += str(ord(ch))
+				self.decoded_msg += str(ord(ch) - i)
+			i += 5
 
 		self.decoded_msg_len = len(self.decoded_msg)
 		self.decoded = True
@@ -78,8 +82,8 @@ class MobileMessage():
 
 		print "========================== ORIGINAL DATA ============================"
 		print "Mobile number : ", self.mobile_number
-		print "Customer id : ", self.customer_id
-		print "SMS id : ", self.sms_id
+		print "Customer id   : ", self.customer_id
+		print "SMS id        : ", self.sms_id
 		print "Combined data : ", self.combined_data
 
 		print "\n====== ENCODED DATA from " + self.combined_data + "========"
@@ -87,18 +91,39 @@ class MobileMessage():
 		print "Encoded message length : ", self.encoded_msg_len
 
 		print "\n====== DECODED DATA from " + self.encoded_msg + " ====================="
-		print "Encoded message        : ", self.decoded_msg
-		print "Encoded message length : ", self.decoded_msg_len
+		print "Decoded message        : ", self.decoded_msg
+		print "Decoded message length : ", self.decoded_msg_len
 
 		print "Mobile number          : ", self.decoded_msg[0:10]
 		print "Customer id            : ", self.decoded_msg[10:15]
 		print "SMS id                 : ", self.decoded_msg[15:20]
 
 def main():
-	msg = MobileMessage("8461933658", "48345", "98765")
+	# msg = MobileMessage("8445674545", "48345", "98765")
+	# msg = MobileMessage("6566974849", "65787", "09993")
+	msg = MobileMessage("6565974865", "65787", "09993")
 	msg.encode()
 	msg.decode()
 	msg.details()
 
 if __name__ == "__main__":
 	main()
+
+
+
+# ========================== ORIGINAL DATA ============================
+# Mobile number :  6566974849
+# Customer id   :  65787
+# SMS id        :  09993
+# Combined data :  65669748496578709993
+
+# ====== ENCODED DATA from 65669748496578709993========
+# Encoded message        :  BHl@F[mj??
+# Encoded message length :  10
+
+# ====== DECODED DATA from BHl@F[mj?? =====================
+# Decoded message        :  65669748496578709993
+# Decoded message length :  20
+# Mobile number          :  6566974849
+# Customer id            :  65787
+# SMS id                 :  09993
