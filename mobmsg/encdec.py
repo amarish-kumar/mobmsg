@@ -16,7 +16,7 @@ class MobileMessage():
         self.combined_data = self.mobile_number + self.customer_id + self.sms_id
         self.encoded_msg = ""
         self.decoded_msg = ""
-        self.encoded_msg_len = 0
+        self.encoded_msg_len 	= 0
         self.decoded_msg_len = 0
         self.encoded = False
         self.decoded = False
@@ -60,7 +60,7 @@ class MobileMessage():
 
         i = 1
         for ch in self.encoded_msg:
-            if(ord(ch) / 10 == 0):
+            if((ord(ch)-i) / 10 == 0):
                 self.decoded_msg += "0" + str(ord(ch) - i)
             else:
                 self.decoded_msg += str(ord(ch) - i)
@@ -103,7 +103,8 @@ class MobileMessage():
 def main():
     # msg = MobileMessage("8445674545", "48345", "98765")
     # msg = MobileMessage("6566974849", "65787", "09993")
-    msg = MobileMessage("6565974865", "65787", "09993")
+    # msg = MobileMessage("6565974865", "65787", "09993")
+    msg =  MobileMessage("7353787704", "75654", "56454")
     msg.encode()
     msg.decode()
     msg.details()

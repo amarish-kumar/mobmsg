@@ -34,35 +34,6 @@ pip install mobmsg
 
 ### A Simple usage of the mobmsg package from interactive Python terminal
 
-```python
-MacBook-Pro:~ admin$ python
-Python 2.7.13 (v2.7.13:a06454b1afa1, Dec 17 2016, 12:39:47) 
-[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> import mobmsg
->>> msg = mobmsg.MobileMessage(7353787704, 45654, 45464)
->>> msg.encode()
->>> msg.decode()
->>> msg.details()
-========================== ORIGINAL DATA ============================
-Mobile number :  7353787704
-Customer id   :  45654
-SMS id        :  45464
-Combined data :  73537877044565445464
-
-====== ENCODED DATA from 73537877044565445464========
-Encoded message        :  J;Y]G`P_n
-Encoded message length :  10
-
-====== DECODED DATA from J;Y]G`P_n =====================
-Decoded message        :  7353787744565445464
-Decoded message length :  19
-Mobile number          :  7353787744
-Customer id            :  56544
-SMS id                 :  5464
->>> 
-```
-
 You can pass parameters as **strings** or **integers** or as a combination of both
 
 ```python
