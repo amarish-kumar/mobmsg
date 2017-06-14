@@ -7,5 +7,5 @@ setup(name="mobmsg",
 	  author="Rishikesh Agrawani",
 	  author_email="rishikesh0014051992@gmail.com",
 	  license="GNU GENERAL PUBLIC LICENSE, Version 3",
-	  packages=["mobmsg"]
+	  packages=["mobmsg"],
 	  zip_safe=False)
