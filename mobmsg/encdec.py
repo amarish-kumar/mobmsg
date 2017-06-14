@@ -11,6 +11,7 @@ class MobileMessage():
 		self.mobile_number = str(mobile_number)
 		self.customer_id = str(customer_id)
 		self.sms_id = str(sms_id)
+		self.combined_data = self.mobile_number + self.customer_id + self.sms_id
 		self.encoded_msg = ""
 		self.decoded_msg = ""
 		self.encoded_msg_len = 0
@@ -40,7 +41,11 @@ class MobileMessage():
 		if not self.is_valid():
 			return
 
-
+		start = 0
+		for last in range(2, 21, 2):
+			self.encoded_msg += chr(int(self.combined_data[start:last]))
+			start += 2
+		self.encoded_msg_len = len(self.encoded_msg)
 		self.encoded = True
 
 
@@ -65,16 +70,16 @@ class MobileMessage():
 		print "Mobile number : ", self.mobile_number
 		print "Customer id : ", self.customer_id
 		print "SMS id : ", self.sms_id
-		print "Combined data : ", self.mobile_number + self.customer_id + self.sms_id
+		print "Combined data : ", self.combined_data
 		print "\n========================== ENCODED DATA ============================"
-		print "Encoded message : ", self.encoded_msg
+		print "Encoded message        : ", self.encoded_msg
 		print "Encoded message length : ", self.encoded_msg_len
 		print "\n========================== DECODED DATA ============================"
-		print "Encoded message : ", self.decoded_msg
+		print "Encoded message        : ", self.decoded_msg
 		print "Encoded message length : ", self.decoded_msg_len
 
 def main():
-	msg = MobileMessage("7353787704", "12345", "98765")
+	msg = MobileMessage("8461933658", "48345", "98765")
 	msg.encode()
 	msg.details()
 
