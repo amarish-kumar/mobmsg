@@ -14,7 +14,7 @@ pip install mobmsg
 
 ### Steps to use the package
 
-* import the **mobmsg** module
+* import **mobmsg** module
 
 * instantiate the MobileMessage class by passing 3 parameters.
 
@@ -26,11 +26,11 @@ pip install mobmsg
 
 	* 3rd parameter is a 5 digit **sms id**.
 
-* Call encode() method on instantiated object.
+* Call **encode()** method on instantiated object.
 
-* Call decode() method on instantiated object.
+* Call **decode()** method on instantiated object.
 
-* Finally call details() method on instantiated object.
+* Finally call **details()** method on instantiated object.
 
 ### A Simple usage of the mobmsg package from interactive Python terminal
 
