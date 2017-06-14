@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name="mobmsg",
-	  version="0.1",
+	  version="0.2",
 	  description="A library for decoding the mobile messaging components(10 digits mobile number, customer id, sms id)",
 	  url="https://github.com/hygull/mobmsg",
 	  author="Rishikesh",
