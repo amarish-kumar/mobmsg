@@ -35,6 +35,23 @@ class MobileMessage():
 			print "\nInvalid mobile number, expected 10 digits got %s"%(self.mobile_number)
 			return False
 
+	def details(self):
+		""" A method that displays the details """
+		if !self.encoded:
+			print "\nMessage encoding is required to get the details"
+			return
 
+		if !self.decoded:
+			print "\nMessage encoding is required to get the details"
+			return
+
+		print "========================== ORIGINAL DATA ============================"
+		print "Mobile number : ", self.mobile_number
+		print "Customer id : ", self.customer_id
+		print "SMS id : ", self.sms_id
+		print "Combined data : ", self.mobile_number + self.customer_id + self.sms_id
+		print "\n========================== ENCODED DATA ============================"
+		print "Encoded message : ", 
+		print "\n========================== DECODED DATA ============================"
 
 
