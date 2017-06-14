@@ -18,13 +18,13 @@ pip install mobmsg
 
 * instantiate the MobileMessage class by passing 3 parameters.
 
-Parameters can be strings or integers. 
+	* Parameters can be strings or integers. 
 
-1st parameter is a 10 digit **mobile number**
+	* 1st parameter is a 10 digit **mobile number**
 
-2nd parameter is a 5 digit **customer id** & 
+	* 2nd parameter is a 5 digit **customer id** & 
 
-3rd parameter is a 5 digit **sms id**.
+	* 3rd parameter is a 5 digit **sms id**.
 
 * Call encode() method on instantiated object.
 
@@ -87,5 +87,36 @@ Decoded message length :  20
 Mobile number          :  6565786545
 Customer id            :  45654
 SMS id                 :  45464
+>>> 
+```
+
+Another sample
+
+```python
+>>> import mobmsg
+>>> msg = mobmsg.MoblileMessage(9772254140, 56575, 56565)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'MoblileMessage'
+>>> msg = mobmsg.MobileMessage(9772254140, 56575, 56565)
+>>> msg.encode()
+>>> msg.decode()
+>>> msg.details()
+========================== ORIGINAL DATA ============================
+Mobile number :  9772254140
+Customer id   :  56575
+SMS id        :  56565
+Combined data :  97722541405657556565
+
+====== ENCODED DATA from 97722541405657556565========
+Encoded message        :  bN$9=RX[jo
+Encoded message length :  10
+
+====== DECODED DATA from bN$9=RX[jo =====================
+Decoded message        :  97722541405657556565
+Decoded message length :  20
+Mobile number          :  9772254140
+Customer id            :  56575
+SMS id                 :  56565
 >>> 
 ```
