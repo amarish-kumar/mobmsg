@@ -45,42 +45,59 @@ class MobileMessage():
 		for last in range(2, 21, 2):
 			self.encoded_msg += chr(int(self.combined_data[start:last]))
 			start += 2
+
 		self.encoded_msg_len = len(self.encoded_msg)
 		self.encoded = True
 
 
-	# def decode(self):
-	# 	""" A method that encodes the message """
-	# 	if not self.is_valid():
-	# 		return
+	def decode(self):
+		""" A method that encodes the message """
+		if not self.is_valid():
+			return
 
-	# 	self.decoded = True
+		for ch in self.encoded_msg:
+			if(ord(ch)/10==0):
+				self.decoded_msg += "0"+str(ord(ch))
+			else:
+				self.decoded_msg += str(ord(ch))
+
+		self.decoded_msg_len = len(self.decoded_msg)
+		self.decoded = True
 
 	def details(self):
 		""" A method that displays the details """
 		if not self.encoded:
 			print "\nMessage encoding is required to get the details"
+			print "Don't forget to call encode() method before calling details()"
 			return
 
-		# if !self.decoded:
-		# 	print "\nMessage encoding is required to get the details"
-		# 	return
+		if not self.decoded:
+			print "\nMessage decoding is required to get the details"
+			print "Don't forget to call decode() method before calling details()"
+			return
 
 		print "========================== ORIGINAL DATA ============================"
 		print "Mobile number : ", self.mobile_number
 		print "Customer id : ", self.customer_id
 		print "SMS id : ", self.sms_id
 		print "Combined data : ", self.combined_data
-		print "\n========================== ENCODED DATA ============================"
+
+		print "\n====== ENCODED DATA from " + self.combined_data + "========"
 		print "Encoded message        : ", self.encoded_msg
 		print "Encoded message length : ", self.encoded_msg_len
-		print "\n========================== DECODED DATA ============================"
+
+		print "\n====== DECODED DATA from " + self.encoded_msg + " ====================="
 		print "Encoded message        : ", self.decoded_msg
 		print "Encoded message length : ", self.decoded_msg_len
+
+		print "Mobile number          : ", self.decoded_msg[0:10]
+		print "Customer id            : ", self.decoded_msg[10:15]
+		print "SMS id                 : ", self.decoded_msg[15:20]
 
 def main():
 	msg = MobileMessage("8461933658", "48345", "98765")
 	msg.encode()
+	msg.decode()
 	msg.details()
 
 if __name__ == "__main__":
