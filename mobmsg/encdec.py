@@ -8,9 +8,9 @@
 class MobileMessage():
 	""" A class that defines that defines the states & methods for mobile messaging"""
 	def __init__(self, mobile_number, customer_id, sms_id):
-		self.mobile_number = mobile_number
-		self.customer_id = customer_id
-		self.sms_id = sms_id
+		self.mobile_number = str(mobile_number)
+		self.customer_id = str(customer_id)
+		self.sms_id = str(sms_id)
 		self.encoded_msg = ""
 		self.decoded_msg = ""
 		self.encoded_msg_len = 0
@@ -18,7 +18,7 @@ class MobileMessage():
 		self.encoded = False
 		self.decoded = False
 
-	def is_valid():
+	def is_valid(self):
 		""" To check for the exact format like 73537877040123476543 i.e 20 digits """
 		import re
 		if re.match("^([1-9]{1})([0-9]{9})$", self.mobile_number):
@@ -35,15 +35,31 @@ class MobileMessage():
 			print "\nInvalid mobile number, expected 10 digits got %s"%(self.mobile_number)
 			return False
 
+	def encode(self):
+		""" A method that encodes the message """
+		if not self.is_valid():
+			return
+
+
+		self.encoded = True
+
+
+	# def decode(self):
+	# 	""" A method that encodes the message """
+	# 	if not self.is_valid():
+	# 		return
+
+	# 	self.decoded = True
+
 	def details(self):
 		""" A method that displays the details """
-		if !self.encoded:
+		if not self.encoded:
 			print "\nMessage encoding is required to get the details"
 			return
 
-		if !self.decoded:
-			print "\nMessage encoding is required to get the details"
-			return
+		# if !self.decoded:
+		# 	print "\nMessage encoding is required to get the details"
+		# 	return
 
 		print "========================== ORIGINAL DATA ============================"
 		print "Mobile number : ", self.mobile_number
@@ -51,7 +67,16 @@ class MobileMessage():
 		print "SMS id : ", self.sms_id
 		print "Combined data : ", self.mobile_number + self.customer_id + self.sms_id
 		print "\n========================== ENCODED DATA ============================"
-		print "Encoded message : ", 
+		print "Encoded message : ", self.encoded_msg
+		print "Encoded message length : ", self.encoded_msg_len
 		print "\n========================== DECODED DATA ============================"
+		print "Encoded message : ", self.decoded_msg
+		print "Encoded message length : ", self.decoded_msg_len
 
+def main():
+	msg = MobileMessage("7353787704", "12345", "98765")
+	msg.encode()
+	msg.details()
 
+if __name__ == "__main__":
+	main()
